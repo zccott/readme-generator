@@ -9,6 +9,9 @@ const readmeSlice = createSlice({
   name: "readme",
   initialState,
   reducers: {
+    reorderSections(state, action) {
+      state.sections = action.payload;
+    },
     addSection: (state, action) => {
       const id = nanoid();
       state.selectedSections.push({ id, title: action.payload.title, content: action.payload.content });
@@ -35,6 +38,7 @@ export const {
   setActiveSection,
   updateSectionContent,
   resetAll,
+  reorderSections,
 } = readmeSlice.actions;
 
 export default readmeSlice.reducer;

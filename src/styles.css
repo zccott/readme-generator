@@ -10,6 +10,26 @@
   padding: 1rem;
   overflow-y: auto;
 }
+.sidebar div {
+  background-color: #e3f2fd;
+  border: 1px solid #bbdefb; 
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #0d47a1;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar div:hover {
+  background-color: #bbdefb;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 .editor {
   width: 40%;
   padding: 1rem;

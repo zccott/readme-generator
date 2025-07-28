@@ -30,7 +30,7 @@ export default function SectionManager() {
 
   return (
     <div className="sidebar">
-      <h2>
+      <h2 className="head">
         Sections
         <IconButton onClick={handleReset}>
           <RefreshIcon />
@@ -54,7 +54,7 @@ export default function SectionManager() {
       ))}
 
       <hr />
-      <h3>Add Section</h3>
+      <h3 className="head">Add Section</h3>
       {Object.keys(templates).map((title) => (
         <Button key={title} onClick={() => handleAdd(title)} variant="text">
           {title}

@@ -7,7 +7,7 @@ export default function MarkdownPreview() {
 
   return (
     <div className="preview">
-      <h2>Preview</h2>
+      <h2 className="head">Preview</h2>
       <div className="markdown">
         <ReactMarkdown>
           {selectedSections.map((s) => s.content).join("\n\n")}

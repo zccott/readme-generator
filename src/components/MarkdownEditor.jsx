@@ -12,7 +12,7 @@ export default function MarkdownEditor() {
 
   return (
     <div className="editor">
-      <h2>Editing: {section.title}</h2>
+      <h2 className="head">Editing: {section.title}</h2>
       <textarea
         className="textarea"
         value={section.content}

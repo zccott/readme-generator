@@ -26,7 +26,13 @@ html, body {
   overflow: hidden;
 }
 
-/* Top-level layout container */
+.head {
+  font-size: 1.5rem;
+  color: var(--color-sidebar-text);
+  margin-bottom: 10px;
+}
+
+
 .container {
   display: flex;
   height: 100dvh;
@@ -35,7 +41,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Sidebar (left column) */
+
 .sidebar {
   width: 20%;
   padding: 1rem;
@@ -63,7 +69,7 @@ html, body {
   box-shadow: 0 2px 6px var(--color-sidebar-hover-shadow);
 }
 
-/* Editor (middle column) */
+
 .editor {
   width: 40%;
   padding: 1rem;
@@ -73,7 +79,13 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Preview (right column) */
+.editor p{
+  color: var(--color-editor-text);
+  font-size: 1rem;
+  margin: 0;
+}
+
+
 .preview {
   width: 40%;
   padding: 1rem;
@@ -83,7 +95,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Textarea for editing */
+
 .textarea {
   width: 100%;
   flex: 1;
@@ -107,7 +119,7 @@ html, body {
   box-shadow: 0 0 0 3px var(--color-editor-focus-ring);
 }
 
-/* Markdown preview styling */
+
 .markdown {
   flex: 1;
   width: 100%;
@@ -117,4 +129,33 @@ html, body {
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
+}
+
+
+/* Custom scrollbar for WebKit browsers */
+.textarea::-webkit-scrollbar,
+.markdown::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.textarea::-webkit-scrollbar-track,
+.markdown::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb,
+.markdown::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(33, 150, 243, 0.4); /* var(--color-editor-focus) with transparency */
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.textarea::-webkit-scrollbar-thumb:hover,
+.markdown::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(33, 150, 243, 0.6);
 }

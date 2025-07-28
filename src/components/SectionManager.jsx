@@ -14,15 +14,20 @@ import Button from "@mui/material/Button";
 
 export default function SectionManager() {
   const dispatch = useDispatch();
-  const { selectedSections, activeSectionId } = useSelector(
-    (state) => state.readme
-  );
+  const {
+    selectedSections = [],
+    activeSectionId,
+    availableSectionTitles = [],
+  } = useSelector((state) => state.readme || {});
 
   const handleAdd = (title) => {
-    if (!selectedSections.find((s) => s.title === title)) {
+    const existing = selectedSections.find((s) => s.title === title);
+    if (!existing) {
       dispatch(
         addSection({ title, content: templates[title] || `## ${title}\n\n` })
       );
+    } else {
+      dispatch(setActiveSection(existing.id));
     }
   };
 
@@ -30,18 +35,22 @@ export default function SectionManager() {
 
   return (
     <div className="sidebar">
-      <h2>
-        Sections
-        <IconButton onClick={handleReset}>
-          <RefreshIcon />
-        </IconButton>
-      </h2>
+      {selectedSections.length > 0 && (
+        <h2 className="head">
+          Sections
+          <IconButton onClick={handleReset}>
+            <RefreshIcon />
+          </IconButton>
+        </h2>
+      )}
+
       {selectedSections.map((s) => (
         <div
           key={s.id}
           className={`section-btn ${s.id === activeSectionId ? "active" : ""}`}
+          onClick={() => dispatch(setActiveSection(s.id))}
         >
-          <span onClick={() => dispatch(setActiveSection(s.id))}>
+          <span>
             {s.title}
           </span>
           <IconButton
@@ -53,9 +62,9 @@ export default function SectionManager() {
         </div>
       ))}
 
-      <hr />
-      <h3>Add Section</h3>
-      {Object.keys(templates).map((title) => (
+      {selectedSections.length > 0 && <hr />}
+      <h3 className="head">Add Section</h3>
+      {availableSectionTitles.map((title) => (
         <Button key={title} onClick={() => handleAdd(title)} variant="text">
           {title}
         </Button>

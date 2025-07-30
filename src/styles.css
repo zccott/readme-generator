@@ -29,7 +29,6 @@ html, body {
 .head {
   font-size: 1.5rem;
   color: var(--color-sidebar-text);
-  margin-bottom: 10px;
 }
 
 
@@ -94,6 +93,20 @@ html, body {
   height: 100%;
   box-sizing: border-box;
 }
+
+.preview-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-title{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
 
 
 .textarea {

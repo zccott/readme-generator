@@ -20,7 +20,7 @@ export default function MarkdownEditor() {
       if (selectedSections.length > 0) {
         dispatch(setActiveSection(selectedSections[0].id));
       } else if (availableSectionTitles.length > 0) {
-        const title = availableSectionTitles[0];
+        const title = availableSectionTitles.find((t) => t === "Project Title");
         const content = templates[title] || "";
         dispatch(addSection({ title, content }));
       }
@@ -37,7 +37,7 @@ export default function MarkdownEditor() {
 
   return (
     <div className="editor">
-      <h2 className="head">Editing: {section.title || ""}</h2>
+      <h2 className="head">Editing - {section.title || ""}</h2>
       <textarea
         className="textarea"
         value={section.content || ""}

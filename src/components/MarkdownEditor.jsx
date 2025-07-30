@@ -1,22 +1,49 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSectionContent } from "../redux/readmeSlice";
+import { useEffect } from "react";
+import {
+  updateSectionContent,
+  setActiveSection,
+  addSection,
+} from "../redux/readmeSlice";
+import templates from "../utils/sectionTemplates";
 
 export default function MarkdownEditor() {
   const dispatch = useDispatch();
-  const section = useSelector((state) =>
-    state.readme.selectedSections.find((s) => s.id === state.readme.activeSectionId)
+
+  const { selectedSections, activeSectionId, availableSectionTitles } = useSelector(
+    (state) => state.readme
   );
 
-  if (!section) return <div className="editor"><h2 className="head">Editor</h2><p>No section selected</p></div>;
+  const section = selectedSections.find((s) => s.id === activeSectionId);
+
+  useEffect(() => {
+      if (selectedSections.length > 0) {
+        dispatch(setActiveSection(selectedSections[0].id));
+      } else if (availableSectionTitles.length > 0) {
+        const title = availableSectionTitles[0];
+        const content = templates[title] || "";
+        dispatch(addSection({ title, content }));
+      }
+  }, [activeSectionId, selectedSections, availableSectionTitles, dispatch]);
+
+  if (!section) {
+    return (
+      <div className="editor">
+        <h2 className="head">Editor</h2>
+        <p>No section selected</p>
+      </div>
+    );
+  }
 
   return (
     <div className="editor">
-      <h2 className="head">Editing: {section.title ? section.title : ""}</h2>
+      <h2 className="head">Editing: {section.title || ""}</h2>
       <textarea
         className="textarea"
-        value={section.content ? section.content : ""}
-        onChange={(e) => dispatch(updateSectionContent({ id: section.id, content: e.target.value }))}
+        value={section.content || ""}
+        onChange={(e) =>
+          dispatch(updateSectionContent({ id: section.id, content: e.target.value }))
+        }
       />
     </div>
   );

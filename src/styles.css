@@ -172,3 +172,32 @@ html, body {
 .sidebar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(33, 150, 243, 0.6);
 }
+
+.active{
+  background-color: var(--color-editor-focus-bg);
+  border-color: var(--color-editor-focus);
+  box-shadow: 0 0 0 3px var(--color-editor-focus-ring);
+}
+
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .sidebar, .editor, .preview {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .mobile-header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+    
+}

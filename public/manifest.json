@@ -1,0 +1,26 @@
+{
+  "name": "Rahul A P",
+  "short_name": "Rahul A P",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1976d2",
+  "description": "Rahul A P, Software Engineer at AOT Technologies",
+  "icons": [
+    {
+      "src": "/fav32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/fav96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/fav180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

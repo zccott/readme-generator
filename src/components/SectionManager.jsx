@@ -43,16 +43,13 @@ export default function SectionManager() {
           </IconButton>
         </h2>
       )}
-
       {selectedSections.map((s) => (
         <div
           key={s.id}
           className={`section-btn ${s.id === activeSectionId ? "active" : ""}`}
           onClick={() => dispatch(setActiveSection(s.id))}
         >
-          <span>
-            {s.title}
-          </span>
+          <span>{s.title}</span>
           <IconButton
             onClick={() => dispatch(deleteSection(s.id))}
             aria-label="delete"
@@ -62,8 +59,10 @@ export default function SectionManager() {
         </div>
       ))}
 
-      {selectedSections.length > 0 && <hr />}
-      <h3 className="head">Add Section</h3>
+      {availableSectionTitles.length > 0 && <hr />}
+      {availableSectionTitles.length > 0 && (
+        <h3 className="head">Add Section</h3>
+      )}
       {availableSectionTitles.map((title) => (
         <Button key={title} onClick={() => handleAdd(title)} variant="text">
           {title}

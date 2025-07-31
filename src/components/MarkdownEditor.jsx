@@ -10,20 +10,20 @@ import templates from "../utils/sectionTemplates";
 export default function MarkdownEditor() {
   const dispatch = useDispatch();
 
-  const { selectedSections, activeSectionId, availableSectionTitles } = useSelector(
-    (state) => state.readme
-  );
+  const { selectedSections, activeSectionId, availableSectionTitles } =
+    useSelector((state) => state.readme);
 
   const section = selectedSections.find((s) => s.id === activeSectionId);
 
   useEffect(() => {
-      if (selectedSections.length > 0) {
-        dispatch(setActiveSection(selectedSections[0].id));
-      } else if (availableSectionTitles.length > 0) {
-        const title = availableSectionTitles.find((t) => t === "Project Title");
-        const content = templates[title] || "";
-        dispatch(addSection({ title, content }));
-      }
+    if (selectedSections.length === 1) {
+      dispatch(setActiveSection(selectedSections[0].id));
+    } else if (selectedSections.length === 0) {
+      const title = availableSectionTitles.find((t) => t === "Project Title");
+      dispatch(
+        addSection({ title, content: templates[title] || `## ${title}\n\n` })
+      );
+    }
   }, [activeSectionId, selectedSections, availableSectionTitles, dispatch]);
 
   if (!section) {
@@ -42,7 +42,9 @@ export default function MarkdownEditor() {
         className="textarea"
         value={section.content || ""}
         onChange={(e) =>
-          dispatch(updateSectionContent({ id: section.id, content: e.target.value }))
+          dispatch(
+            updateSectionContent({ id: section.id, content: e.target.value })
+          )
         }
       />
     </div>

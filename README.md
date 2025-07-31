@@ -16,7 +16,7 @@ To run this project locally, follow these steps:
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/your-username/readme-creator.git
+    git clone https://github.com/zccott/readme-generator.git
     ```
 2.  Navigate to the project directory:
     ```bash
@@ -60,6 +60,7 @@ This project is licensed under the MIT License.
 ## Authors
 
 *   zccott
+*   rahul-aot
 
 ## Badges
 

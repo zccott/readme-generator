@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zccott.vercel.app/sitemap.xml
+Sitemap: https://readmegenai.vercel.app/sitemap.xml

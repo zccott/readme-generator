@@ -5,7 +5,7 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1976d2",
-  "description": "Rahul A P, Software Engineer at AOT Technologies",
+  "description": "The easiest way to generate beautiful and informative README files. Choose a template, edit, and use Gemini AI to refine your project's description.",
   "icons": [
     {
       "src": "/fav32.png",
